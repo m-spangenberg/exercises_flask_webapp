@@ -1,0 +1,19 @@
+<!-- GENERATE VIEW -->
+<section class="bg-gray-50 dark:bg-gray-900">
+    <div class="items-center px-4 py-4 mx-auto lg:py-0">
+
+        <div class="bg-white sm:p-6 dark:bg-gray-900 mx-auto max-w-max">
+            {% include "apps/_app_progress.html" %}
+            <!-- IMAGE GROUPING -->
+            <div class="flex flex-wrap justify-center">
+                <!-- POPULATE WITH GENERATED IMAGES IF A TASK EXISTS FOR THIS SESSION ID -->
+                {% if job %}
+                    {% for x in range(job.samples) %}
+                        {% include "apps/_app_gen_img.html" %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+ 

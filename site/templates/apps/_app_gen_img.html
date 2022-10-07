@@ -1,0 +1,10 @@
+<figure class="max-w-xs">
+    {% set imageseed = job.seed + x %}
+    {% set imagepath = job.sessionid|string + '_' + imageseed|string + '_0000' + x|string + '.png'%}
+    <img class="max-w-full p-2 h-auto rounded-lg" src="{{ url_for('page_generate_image', sessionid=user.sessionid|string , taskid=job.id|string, name=imagepath) }}" alt="">
+    <br>
+    <div class="flex flex-row">
+        <a href="#" class="inline-flex items-center mx-auto py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 dark:bg-gray-900 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-primary-700 dark:focus:ring-gray-700">Variant</a>
+    </div>
+    <br>
+</figure>

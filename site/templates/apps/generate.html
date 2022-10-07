@@ -1,0 +1,35 @@
+{% extends "apps/base_app.html" %}
+
+{% block title %}Generate | Daydream{% endblock title %}
+
+{% block body %}
+
+{% include "apps/_app_nav.html" %}
+
+{% include "apps/_control.html" %}
+
+{% include "apps/_app_generate_view.html" %}
+
+{% include "apps/_app_timeline.html" %}
+
+{% include "_footer.html" %}
+
+{% block scripts %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    
+{% set session_bar = job.sessionid|string %}
+<script type="text/javascript" charset="utf-8">
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+    var socket = io.connect('http://127.0.0.1:5000');
+    socket.on('{{ session_bar }}', (taskprogress) => {
+        var progress = String(taskprogress);
+        document.getElementById("task-state-value").style.width = progress.concat("%");
+    });
+});
+</script>
+
+{% endblock scripts %}
+
+{% endblock body %}

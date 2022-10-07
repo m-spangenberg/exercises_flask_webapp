@@ -1,0 +1,82 @@
+ <!-- CONTROL PANEL DRAWER -->
+ <div id="drawer-form" class="fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800 transition-transform left-0 top-0 -translate-x-full" tabindex="-1" aria-labelledby="drawer-form-label" aria-hidden="true">
+    <button type="button" data-drawer-dismiss="drawer-form" aria-controls="drawer-form" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Close menu</span>
+    </button>
+
+    <form method="POST" action="#" enctype="multipart/form-data" class="mt-6 mb-6">
+
+        <!-- HELP TOGGLE -->
+        <div class="mb-4">
+            <label for="help-toggle" class="inline-flex relative items-center cursor-pointer">
+                <input type="checkbox" value="checked" id="help-toggle" class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-300 dark:peer-focus:ring-primary-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary-600"></div>
+                <span class="ml-3 text-sm font-bold text-gray-900 dark:text-gray-300">Help</span>
+            </label>
+        </div>
+    
+        <!-- TEXT INPUT-->
+        <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">Image Prompt</h3>
+
+        <div class="mb-6">
+            <textarea id="control-prompt" name="control-prompt" rows="4" aria-describedby="prompt_help" class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-purple-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-400 dark:focus:border-green-400" placeholder="Your image prompt..." required=" "></textarea>    
+            <p class="mt-2 text-sm text-gray-500 dark:text-gray-300" id="prompt_help">Build a picture with words and let your imagination go wild. See the documentation for examples and tips!</p>
+        </div>
+            
+        <!-- SLIDERS -->
+        <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">Options</h3>
+
+        <div class="mb-6">
+            <label for="control-imagecount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-purple-400">Image Count: <span id="control-imagecount-value" class="font-bold text-gray-900 dark:text-green-400">4</span> </label>
+            <input id="control-imagecount" name="control-imagecount" type="range" min="1" max="8" value="4" step="1" aria-describedby="imagecount_help" class="w-full h-1 bg-purple-200 rounded-lg appearance-none cursor-pointer range-sm dark:bg-green-400">
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="imagecount_help">The number of images to generate. Prepaid users can generate 4 images per token, subscribers get special discounts.</p>
+        </div>
+        <div class="mb-6">
+            <label for="control-focussteps" class="block mb-2 text-sm font-medium text-gray-900 dark:text-purple-400">Focus Steps: <span id="control-focussteps-value" class="font-bold text-gray-900 dark:text-green-400">15</span> </label>
+            <input id="control-focussteps" name="control-focussteps" type="range" min="15" max="80" value="15" step="5" aria-describedby="focus_help" class="w-full h-1 bg-purple-200 rounded-lg appearance-none cursor-pointer range-sm dark:bg-green-400">
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="focus_help">More steps mean more variation, but more steps also take longer to process. You might start to see diminishing returns past 50 steps.</p>
+        </div>
+        <div class="mb-6">
+            <label for="control-guidepress" class="block mb-2 text-sm font-medium text-gray-900 dark:text-purple-400">Guide Pressure: <span id="control-guidepress-value" class="font-bold text-gray-900 dark:text-green-400">7.5</span> </label>
+            <input id="control-guidepress" name="control-guidepress" type="range" min="4" max="16" value="7.5" step="0.5" aria-describedby="guide_help" class="w-full h-1 bg-purple-200 rounded-lg appearance-none cursor-pointer range-sm dark:bg-green-400">
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="guide_help">A higher pressure means more literal interpretation of your prompt, but potentially at a sacrifice of creativity. 7.5 is a good place to start.</p>
+        </div>
+        <div class="mb-6">
+            <label for="control-imagew" class="block mb-2 text-sm font-medium text-gray-900 dark:text-purple-400">Image Width: <span id="control-imagew-value" class="font-bold text-gray-900 dark:text-green-400">512</span> </label>
+            <input id="control-imagew" name="control-imagew" type="range" min="320" max="768" value="512" step="64" aria-describedby="imgw_help" class="w-full h-1 bg-purple-200 rounded-lg appearance-none cursor-pointer range-sm dark:bg-green-400">
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="imgw_help">Image width in pixels. Larger images take longer to generate, but provide more visually interesting results.</p>
+        </div>
+        <div class="mb-6">
+            <label for="control-imageh" class="block mb-2 text-sm font-medium text-gray-900 dark:text-purple-400">Image Hight: <span id="control-imageh-value" class="font-bold text-gray-900 dark:text-green-400">768</span> </label>
+            <input id="control-imageh" name="control-imageh" type="range" min="320" max="768" value="768" step="64" aria-describedby="imgh_help" class="w-full h-1 bg-purple-200 rounded-lg appearance-none cursor-pointer range-sm dark:bg-green-400">
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="imgh_help">Image height in pixels. Larger images take longer to generate, but provide more visually interesting results.</p>
+        </div>
+            
+        <!-- SEED FIELD -->
+        <div class="mb-6">
+            <input type="text" id="control-seed" name="control-seed" pattern="[0-9]+" aria-describedby="seed_help" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-400 focus:border-green-400 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-400 dark:focus:border-green-400" placeholder="Seed Value">
+            <p class="mt-2 text-sm text-gray-500 dark:text-gray-300" id="seed_help">Set the seed for reproducible results. Defaults to random.</p>
+        </div>
+
+        <!-- FILE INPUT FIELD -->
+        <div class="mb-6">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="control-file">Upload Image</label>
+            <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file" name="file" type="file">
+            <p class="mt-2 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">Use an existing image or drawing to guide image generation. For best results use images in the same aspect ratio as the image you intend to generate. PNG, JPG, JPEG (MAX. 2MB) are supported.</p>
+        </div>
+
+        <!-- SESSION ID -->
+        <h4 class="mb-4 text-sm text-gray-900 dark:text-white">Session ID: <span class="mb-4 text-sm text-gray-900 dark:text-white">{{ user.sessionid }}</span></h4>
+
+        <!-- ESTIMATED TASK TIME -->
+        <h4 class="mb-4 text-sm text-gray-900 dark:text-white">Estimated Time: <span class="mb-4 text-sm text-gray-900 dark:text-white">3m 37s</span></h4>
+
+
+        <!-- ACTION BUTTONS -->
+        <div class="mb-6">
+            <button type="submit" class="text-white justify-center flex items-center bg-purple-700 hover:bg-purple-800 w-full focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Run</button>    
+        </div>
+
+    </form>
+</div>

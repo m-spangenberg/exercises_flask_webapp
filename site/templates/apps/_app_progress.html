@@ -1,0 +1,20 @@
+<!-- TASK STATUS -->
+<section class="bg-gray-50 dark:bg-gray-900">
+    
+    <div class="items-center justify-center px-4 py-4 mx-auto lg:py-0 mb-4 max-w-xl">
+        {% if job.state == 'completed'%}
+        <h2 id="task-state-string" class="mb-1 text-base font-medium text-purple-700 dark:text-green-400">Complete!</h2>
+        {% else %}
+        <h2 id="task-state-string" class="mb-1 text-base font-medium text-purple-700 dark:text-green-400">Generating</h2>
+        {% endif %}
+        
+        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            {% if job.state == 'completed'%}
+            <div id="task-state-value" class="bg-purple-600 h-2.5 rounded-full dark:bg-purple-500" style="width: 100%"></div>
+            {% else %}
+            <div id="task-state-value" class="bg-purple-600 h-2.5 rounded-full dark:bg-purple-500" style="width: 0%"></div>
+            {% endif %}
+        </div>
+    </div>
+
+</section>
